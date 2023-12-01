@@ -1,7 +1,7 @@
 #! pip install -r requirements.txt
 
 import streamlit as st
-import xarray as xr
+#import xarray as xr
 
 def main():
         st.title("NetCDF Visualization Example")
