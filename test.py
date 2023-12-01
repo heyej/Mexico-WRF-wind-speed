@@ -4,23 +4,16 @@ import streamlit as st
 import xarray as xr
 
 def main():
-    st.title("NetCDF Visualization Example")
+        st.title("NetCDF Visualization Example")
+    st.header('Test')
 
-    # Path to your NetCDF file
-    netcdf_path = "SanFernando_seasons.nc"  # Replace with the actual path to your NetCDF file
-
-    # Load the NetCDF file using xarray
-    ds = xr.open_dataset(netcdf_path)
-
-    # Display dataset information
-    st.write("NetCDF Dataset Information:")
-    st.write(ds)
-
-    # Allow the user to select a variable
-    selected_variable = st.selectbox("Select a variable:", ds.variables.keys())
-
-    # Display the selected variable as an image
-    st.image(ds[selected_variable], caption=f"{selected_variable} Visualization", use_column_width=True)
+    filename = 'wind_global.nc'
+    geojson = 'https://github.com/opengeos/leafmap/raw/master/examples/data/countries.geojson'
+    m = leafmap.Map(layers_control=True)
+    m.add_basemap('CartoDB.DarkMatter')
+    #m.add_velocity(filename, zonal_speed='u_wind', meridional_speed='v_wind')
+    m.add_netcdf(filename, variables=None, port='default', layer_name='NetCDF layer', shift_lon=True, lat='lat', lon='lon')
+    m.to_streamlit()
 
 if __name__ == "__main__":
     main()
