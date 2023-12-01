@@ -2,6 +2,7 @@
 
 import streamlit as st
 #import xarray as xr
+import leafmap.foliumap as leafmap
 
 def main():
         st.title("NetCDF Visualization Example")
