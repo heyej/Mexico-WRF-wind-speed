@@ -1,4 +1,7 @@
 name: prueba
+channels:
+  - conda-forge
+  - defaults
 dependencies:
   - gdal
   - xarray
