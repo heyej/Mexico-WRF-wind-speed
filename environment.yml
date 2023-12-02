@@ -1,0 +1,7 @@
+name: prueba
+dependencies:
+  - gdal
+  - xarray
+  - netCDF4
+  - leafmap
+  - rioxarray
