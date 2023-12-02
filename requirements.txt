@@ -1,4 +1,4 @@
-gdal
+gdal==3.2.2
 xarray
 netCDF4
 leafmap
