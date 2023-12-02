@@ -1,4 +1,4 @@
 xarray
 netCDF4
 leafmap
-streamlit
+rioxarray
