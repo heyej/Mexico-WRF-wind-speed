@@ -4,3 +4,4 @@ netCDF4
 leafmap
 rioxarray
 localtileserver
+psutil
