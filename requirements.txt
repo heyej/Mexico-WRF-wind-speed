@@ -1,0 +1,5 @@
+gdal
+xarray
+netCDF4
+leafmap
+rioxarray
