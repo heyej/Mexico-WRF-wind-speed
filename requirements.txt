@@ -3,3 +3,4 @@ xarray
 netCDF4
 leafmap
 rioxarray
+localtileserver
