@@ -1,2 +1,2 @@
-iris
+scitools-iris
 cartopy
