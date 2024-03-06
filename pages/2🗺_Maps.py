@@ -13,28 +13,31 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeat
 import cartopy.io.img_tiles as cimgt
 
-def load_cube(cube_name, idd):
+@st.cache_data
+def load_cube(cube_name):
     cube = iris.load_cube('data/'+cube_name+'_seasons.nc')
+    return cube
 
-    season_coord = cube.coord("season")
+#@st.cache_data(experimental_allow_widgets=True)
+def select_season(_cube, idd):
+    season_coord = _cube.coord("season")
     met_seasons = [str(value) for value in season_coord.points]
 
     seasons = {'djf': 'Winter', 'mam': 'Spring', 'jja': 'Summer', 'son': 'Autumn'}
 
     st.markdown("##### 3. Select a season:")
-    season_name = st.select_slider('', options=list(map(seasons.get, met_seasons)),
-        label_visibility='visible', key=idd)
+    season_name = st.select_slider('label', options=list(map(seasons.get, met_seasons)),
+        label_visibility='hidden', key=idd)
 
     value = [i for i in seasons if seasons[i]==season_name]
-    loc_n_season = cube.extract(iris.Constraint(season=value))
+    loc_n_season = _cube.extract(iris.Constraint(season=value))
 
-    lats = cube.coord("latitude").points
-    lons = cube.coord("longitude").points
+    lats = _cube.coord("latitude").points
+    lons = _cube.coord("longitude").points
     return lats, lons, loc_n_season, value
 
 @st.cache_data
 def plot_map(lats, lons, _location, season_value):
-    plt.close()
     fig = plt.figure(figsize=(10,15))
     ax = plt.axes(projection=ccrs.PlateCarree())
     ax.set_extent([lons[0]-1, lons[-1]+1, lats[0]-1, lats[-1]+1])
@@ -66,9 +69,9 @@ def plot_map(lats, lons, _location, season_value):
         titulo = 'Autumn'
     ax.set_title(titulo)
     st.pyplot(fig, dpi=90)
+    plt.close()
 
 def main():
-    #st.set_page_config(layout="wide")
     st.sidebar.title("Navigation")
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
@@ -102,87 +105,108 @@ def main():
 
     with st_1NW:
         cube_name = '1NW'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_2NW:
         cube_name = '2NW'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_3NW4NW:
         cube_name = '3NW4NW'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_5NW:
         cube_name = '5NW'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_6N:
         cube_name = '6N'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_7N:
         cube_name = '7N'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_8N:
         cube_name = '8N'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_9NE:
         cube_name = '9NE'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_10NE:
         cube_name = '10NE'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_11C:
         cube_name = '11C'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_12C:
         cube_name = '12C'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_13TVB:
         cube_name = '13TVB'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_14TVB:
         cube_name = '14TVB'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_15TVB:
         cube_name = '15TVB'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_16TVB:
         cube_name = '16TVB'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_17TVB:
         cube_name = '17TVB'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_18T:
         cube_name = '18T'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_19T:
         cube_name = '19T'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_20T:
         cube_name = '20T'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_21Y:
         cube_name = '21Y'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
     with st_22Y:
         cube_name = '22Y'
-        lats, lons, loc_n_season, value = load_cube(cube_name, idd=cube_name)
+        cube = load_cube(cube_name)
+        lats, lons, loc_n_season, value = select_season(cube, idd=cube_name)
         plot_map(lats, lons, loc_n_season, value)
 
 
