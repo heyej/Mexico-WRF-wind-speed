@@ -35,7 +35,8 @@ def main():
 
     ### Contents
     - Maps of seasonal wind speeds.
-    - Reference and how to cite.
+    - Distribution of regions and stations.
+    - How to cite.
     """
     )
 
