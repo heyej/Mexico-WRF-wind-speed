@@ -13,7 +13,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeat
 import cartopy.io.img_tiles as cimgt
 
-@st.cache_data(experimental_allow_widgets=True)
 def load_cube(cube_name, idd):
     cube = iris.load_cube('data/'+cube_name+'_seasons.nc')
 
@@ -65,7 +64,7 @@ def plot_map(lats, lons, _location, season_value):
         titulo = 'Summer'
     else:
         titulo = 'Autumn'
-    plt.title(titulo)
+    ax.set_title(titulo)
     st.pyplot(fig, dpi=90)
 
 def main():
