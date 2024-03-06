@@ -13,6 +13,7 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeat
 import cartopy.io.img_tiles as cimgt
 
+@st.cache_data(experimental_allow_widgets=True)
 def load_cube(cube_name, idd):
     cube = iris.load_cube('data/'+cube_name+'_seasons.nc')
 
@@ -21,7 +22,7 @@ def load_cube(cube_name, idd):
 
     seasons = {'djf': 'Winter', 'mam': 'Spring', 'jja': 'Summer', 'son': 'Autumn'}
 
-    st.markdown("##### 2. Select a season:")
+    st.markdown("##### 3. Select a season:")
     season_name = st.select_slider('', options=list(map(seasons.get, met_seasons)),
         label_visibility='visible', key=idd)
 
@@ -32,8 +33,8 @@ def load_cube(cube_name, idd):
     lons = cube.coord("longitude").points
     return lats, lons, loc_n_season, value
 
-
-def plot_map(lats, lons, location, season_value):
+@st.cache_data
+def plot_map(lats, lons, _location, season_value):
     plt.close()
     fig = plt.figure(figsize=(10,15))
     ax = plt.axes(projection=ccrs.PlateCarree())
@@ -54,7 +55,7 @@ def plot_map(lats, lons, location, season_value):
     ax.add_feature(cfeat.OCEAN, facecolor='lightblue')
     ax.add_feature(cfeat.LAND, facecolor='#CAE4C7')
 
-    qplt.contourf(location, 10)
+    qplt.contourf(_location, 10)
 
     if season_value[0] == 'djf':
         titulo = 'Winter'

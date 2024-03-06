@@ -15,7 +15,12 @@ def main():
     st.sidebar.title("Navigation")
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
-    st.header('Reference')
+    st.header('Stations and domains locations')
+
+    st.markdown(
+    """ffsd
+
+    """)
 
 if __name__ == "__main__":
     main()
