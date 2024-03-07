@@ -71,7 +71,7 @@ def plot_map(lats, lons, _location, season_value):
     st.pyplot(fig, dpi=90)
     plt.close()
 
-@st.cache_data(experimental_allow_widgets=True)
+#@st.cache_data(experimental_allow_widgets=True)
 def main():
     st.sidebar.info("Select a page above.")
 
