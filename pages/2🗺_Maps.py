@@ -36,7 +36,7 @@ def select_season(_cube, idd):
     lons = _cube.coord("longitude").points
     return lats, lons, loc_n_season, value
 
-@st.cache_data
+@st.cache_data(experimental_allow_widgets=True)
 def plot_map(lats, lons, _location, season_value):
     fig = plt.figure(figsize=(10,15))
     ax = plt.axes(projection=ccrs.PlateCarree())
@@ -71,8 +71,9 @@ def plot_map(lats, lons, _location, season_value):
     st.pyplot(fig, dpi=90)
     plt.close()
 
+@st.cache_data(experimental_allow_widgets=True)
 def main():
-    st.sidebar.title("Navigation")
+    st.sidebar.info("Select a page above.")
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
 

@@ -20,7 +20,7 @@ def main():
          page_icon="👋🏽",)
 
     #st.sidebar.title("Navigation")
-    st.sidebar.success("Select a page above.")
+    st.sidebar.info("Select a page above.")
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
 

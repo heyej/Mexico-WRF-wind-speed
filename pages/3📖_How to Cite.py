@@ -11,8 +11,7 @@ import time
 import streamlit as st
 
 def main():
-    #st.set_page_config(layout="wide")
-    st.sidebar.title("Navigation")
+    st.sidebar.info("Select a page above.")
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
     st.header('Reference')
