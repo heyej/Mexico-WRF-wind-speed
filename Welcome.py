@@ -19,8 +19,10 @@ def main():
     st.set_page_config(page_title="Hello",
          page_icon="👋🏽",)
 
-    #st.sidebar.title("Navigation")
-    st.sidebar.info("Select a page above.")
+    st.sidebar.info("""
+    ### License
+    Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico - Dataset © 2024 by J.G. Hernández Yepes, O. Rodríguez-Hernández, C.A. López-Villalobos, O. Martínez-Alvarado is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/
+    """)
 
     st.title("Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico")
 
