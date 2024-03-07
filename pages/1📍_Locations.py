@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-#
-#  streamlit.py
-#
 
 import sys
 
-import matplotlib.pyplot as plt
-import numpy as np
-import time
 import streamlit as st
 
 def main():
+    """
+    Visualize the image of 1km WRF domains and stations used in the project.
+    """
+
     #st.set_page_config(layout="wide")
     st.sidebar.info("""
     ### License
@@ -22,9 +20,5 @@ def main():
 
     st.image('imgs/regions.png', caption='Map of stations and domains', use_column_width='auto')
 
-    st.markdown(
-    """ffsd
-
-    """)
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    sys.exit(main())
