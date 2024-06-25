@@ -55,7 +55,7 @@ def select_season(_cube, idd):
     return lats, lons, loc_n_season, value
 
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_data()
 def plot_map(lats, lons, _location, season_value):
     """
     Plot map of selected season and place
