@@ -28,11 +28,11 @@ def main():
     with 22 masts of observations with a uniform configuration
     and methodology for a nation-wide analysis.
 
-    The maps present seasonal means of wind speed for the domain of WRF at 1 km redolution.
+    The maps present seasonal means of wind speed for the domain of WRF at 1 km resolution.
 
     ### Contents
-    - Maps of seasonal wind speeds.
     - Distribution of regions and stations.
+    - Maps of seasonal wind speeds.
     - How to cite.
     """)
 
