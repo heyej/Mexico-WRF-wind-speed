@@ -99,8 +99,8 @@ def plot_map(lats, lons, _location, season_value):
     else:
         titulo = 'Autumn'
     ax.set_title(titulo)
-    st.write(fig)
-    #st.pyplot(fig, dpi=90)
+    #st.write(fig)
+    st.pyplot(fig, dpi=90)
     plt.close()
 
 
