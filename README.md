@@ -1,4 +1,5 @@
 ## Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mexico-wrf-ws.streamlit.app/)
 
 ### Data Access
 Seasonal datasets are available in the /data folder.
