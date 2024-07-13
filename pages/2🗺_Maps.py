@@ -23,7 +23,7 @@ def load_cube(cube_name):
 
 
 #@st.cache_data(experimental_allow_widgets=True)
-@st.experimental_fragment
+#@st.experimental_fragment
 def select_season(_cube, idd):
     """
     Read available seasons and display a slider with options
