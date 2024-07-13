@@ -23,6 +23,7 @@ def load_cube(cube_name):
 
 
 #@st.cache_data(experimental_allow_widgets=True)
+@st.experimental_fragment
 def select_season(_cube, idd):
     """
     Read available seasons and display a slider with options
@@ -98,7 +99,8 @@ def plot_map(lats, lons, _location, season_value):
     else:
         titulo = 'Autumn'
     ax.set_title(titulo)
-    st.pyplot(fig, dpi=90)
+    st.write(fig)
+    #st.pyplot(fig, dpi=90)
     plt.close()
 
 

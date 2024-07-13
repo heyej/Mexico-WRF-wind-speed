@@ -21,6 +21,13 @@ def main():
 
     st.header('Reference')
 
+    st.markdown('''
+        Please cite the data and this webpage with the followinf reference:
+    ''')
+    st.markdown('''
+        J.G. Hernandez-Yepes, O. Rodriguez-Hernandez, C.A. Lopez-Villalobos, O. Martínez-Alvarado, Atmospheric mesoscale modeling to simulate annual and seasonal wind speeds for wind energy production in Mexico, Sustainable Energy Technologies and Assessments, Volume 68, 2024, 103848, ISSN 2213-1388, https://doi.org/10.1016/j.seta.2024.103848.'''
+    )
+
 
 if __name__ == '__main__':
     sys.exit(main())
