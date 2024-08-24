@@ -29,7 +29,9 @@ def main():
     and methodology for a nation-wide analysis.
 
     The maps present seasonal means of wind speed for the domain of WRF at 1 km resolution.
-
+    
+    If you need additional details about simulations or availability of data please reach us at josegus@outlook.com.
+    
     ### Contents
     - Distribution of regions and stations.
     - Maps of seasonal wind speeds.
